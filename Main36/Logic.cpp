@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
-#define N 5
-#define M 5
+#define N 4
+#define M 4
 using namespace std;
 
 string find_asc_sequence(int matrix[N][M]) {
@@ -104,5 +104,45 @@ int find_longest_amount_number_in_asc_sequence(int matrix[N][M]) {
 	}
 
 	return max_count;
+}	
+
+int sum_between_positive(int matrix[N][M]) {
+	int sum = 0;
+	
+	for (int i = 0; i < N; i++)
+	{
+		int first_positive_index = -1;
+		int second_positive_index = -1;
+
+		bool flag = true;
+
+		for (int j = 0; j < M; j++)
+		{
+			if (matrix[i][j] > 0 && flag) {
+				first_positive_index = j;
+				flag = false;
+			}
+		}
+
+		flag = true;
+
+		for (int j = first_positive_index + 1; j < M; j++)
+		{
+			if (matrix[i][j] > 0 && flag) {
+				second_positive_index = j;
+				flag = false;
+			}
+		}
+
+		cout << "first " << first_positive_index << " second " << second_positive_index << endl;
+
+		for (int j = first_positive_index + 1; j < second_positive_index 
+			&& first_positive_index != -1 && second_positive_index != -1; j++)
+		{
+			sum += matrix[i][j];
+		}
+	}
+	
+	return sum;
 }
 

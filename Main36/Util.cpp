@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
-#define N 5
-#define M 5
+#define N 4
+#define M 4
 
 using namespace std;
 
