@@ -114,27 +114,22 @@ int sum_between_positive(int matrix[N][M]) {
 		int first_positive_index = -1;
 		int second_positive_index = -1;
 
-		bool flag = true;
+		bool flag1 = true;
+		bool flag2 = false;
 
 		for (int j = 0; j < M; j++)
 		{
-			if (matrix[i][j] > 0 && flag) {
+			if (matrix[i][j] > 0 && flag1) {
 				first_positive_index = j;
-				flag = false;
+				flag1 = false;
+				flag2 = true;
+				j++;
 			}
-		}
-
-		flag = true;
-
-		for (int j = first_positive_index + 1; j < M; j++)
-		{
-			if (matrix[i][j] > 0 && flag) {
+			if (matrix[i][j] > 0 && flag2) {
 				second_positive_index = j;
-				flag = false;
+				flag2 = false;
 			}
 		}
-
-		cout << "first " << first_positive_index << " second " << second_positive_index << endl;
 
 		for (int j = first_positive_index + 1; j < second_positive_index 
 			&& first_positive_index != -1 && second_positive_index != -1; j++)
